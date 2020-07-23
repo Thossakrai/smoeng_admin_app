@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>614587340271-4kv0jsf3etimuk2kn12ctqqn0qq48695.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.614587340271-4kv0jsf3etimuk2kn12ctqqn0qq48695</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDFUa8t3Xn9zJBjLAXhI500P1QWpPBhnog</string>
+	<key>GCM_SENDER_ID</key>
+	<string>614587340271</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.thossakrai.smoengUniformAdmin</string>
+	<key>PROJECT_ID</key>
+	<string>uniform-smoeng</string>
+	<key>STORAGE_BUCKET</key>
+	<string>uniform-smoeng.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:614587340271:ios:f184b00168c684425c121a</string>
+	<key>DATABASE_URL</key>
+	<string>https://uniform-smoeng.firebaseio.com</string>
+</dict>
+</plist>
