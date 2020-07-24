@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:smoeng_uniform_admin/verify.dart';
@@ -10,6 +11,7 @@ class ScanPage extends StatefulWidget {
 }
 
 class _ScanPageState extends State<ScanPage> {
+  int snackBarDuration = 3;
   String qrCodeResult = "Not Scanned Yet";
   String userId;
   String orderId;
@@ -112,6 +114,16 @@ class _ScanPageState extends State<ScanPage> {
                     orderId = null;
                     userId = null;
                   });
+                  Flushbar(
+                    title: 'Data has been reset',
+                    message: 'รีเซ็ตข้อมูลและพร้อมแสกนแล้ว',
+                    duration: Duration(seconds: snackBarDuration),
+                    icon: Icon(
+                      Icons.info_outline,
+                      color: Colors.white,
+                    ),
+                    backgroundColor: Colors.blueGrey,
+                  )..show(context);
                 },
                 child: Text(
                   "RESET",

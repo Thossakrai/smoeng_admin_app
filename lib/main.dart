@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:smoeng_uniform_admin/scan.dart';
-import 'package:smoeng_uniform_admin/verify.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.deepOrange,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: MyHomePage(title: 'Pre-order Management System'),
+        home: MyHomePage(title: 'Pre-ordering Management System'),
         debugShowCheckedModeBanner: false);
   }
 }

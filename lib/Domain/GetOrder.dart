@@ -13,6 +13,7 @@ class GetOrder extends StatefulWidget {
 }
 
 class _GetOrderState extends State<GetOrder> {
+  double textSize = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +26,12 @@ class _GetOrderState extends State<GetOrder> {
           return Text("something went wrong");
         } else if (snapshot.hasData) {
           //TODO
-          print("Data Available");
+//          print("Data Available");
           Map<String, dynamic> orderData = snapshot.data.data;
           //Access Data inside orderData via ["key"]
           int tempPrice = 0;
           for (int i = 0; i < orderData["orders"].length; i++) {
-            print(orderData["orders"][i]);
+//            print(orderData["orders"][i]);
             switch (orderData["orders"][i]["product"]) {
               case "เสื้อโปโล" : {
                 tempPrice += 300 * orderData["orders"][i]["amount"];
@@ -48,11 +49,13 @@ class _GetOrderState extends State<GetOrder> {
             }
           }
 
-          print("price = $tempPrice");
+//          print("price = $tempPrice");
           return Column(
             children: [
-              Text("DATA: ${orderData["orders"]}"),
-              Text("TOTAL PRICE = $tempPrice")
+              SizedBox(height: 20,),
+              Text("DATA: ${orderData["orders"]}", style: TextStyle(fontSize: textSize)),
+              SizedBox(height: 20,),
+              Text("TOTAL PRICE = $tempPrice", style: TextStyle(fontSize: textSize),)
             ],
           );
         }

@@ -16,6 +16,7 @@ class VerifyPage extends StatefulWidget {
 
 class _VerifyPageState extends State<VerifyPage> {
   CollectionReference users = Firestore.instance.collection('users');
+  int snackBarDuration = 1;
 
   Future<void> setAsPaid() {
     return users
@@ -31,7 +32,7 @@ class _VerifyPageState extends State<VerifyPage> {
     Flushbar(
       title: 'Transaction failed',
       message: 'โปรดลองอีกครั้งภายหลัง',
-      duration: Duration(seconds: 3),
+      duration: Duration(seconds: snackBarDuration),
       icon: Icon(
         Icons.error_outline,
         color: Colors.white,
@@ -45,7 +46,7 @@ class _VerifyPageState extends State<VerifyPage> {
     Flushbar(
       title: 'Transaction completed',
       message: 'ยืนยันการสั่งซื้อเรียบร้อยแล้ว',
-      duration: Duration(seconds: 3),
+      duration: Duration(seconds: snackBarDuration),
       icon: Icon(
         Icons.check_circle_outline,
         color: Colors.white,
@@ -89,9 +90,9 @@ class _VerifyPageState extends State<VerifyPage> {
               Flushbar(
                 title: 'Action cancelled',
                 message: 'ยกเลิกคำสั่งแล้ว',
-                duration: Duration(seconds: 3),
+                duration: Duration(seconds: snackBarDuration),
                 icon: Icon(
-                  Icons.cancel,
+                  Icons.info_outline,
                   color: Colors.white,
                 ),
                 backgroundColor: Colors.blueGrey,
