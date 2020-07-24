@@ -66,7 +66,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         onPressed: () async {
           //FIXME change VerifyPage to Scan
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => VerifyPage("112549207100786165217", "7U5hyC5xxTjng2GXiMSy")));
+//              .push(MaterialPageRoute(builder: (context) => VerifyPage("112549207100786165217", "ZDTByT4HIr5QwTyM3lZJ")));
+              .push(MaterialPageRoute(builder: (context) => ScanPage()));
         },
         label: Text("SCAN & SET PAID"),
         tooltip: 'Navigate to Scan Page',

@@ -1,20 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class GetOrder extends StatelessWidget {
+class GetOrder extends StatefulWidget {
   final String userId;
   final String orderId;
+
 
   GetOrder(this.userId, this.orderId);
 
   @override
+  _GetOrderState createState() => _GetOrderState();
+}
+
+class _GetOrderState extends State<GetOrder> {
+
+  @override
   Widget build(BuildContext context) {
     CollectionReference users = Firestore.instance.collection('users');
-//    Firestore.instance.collection("users").getDocuments().then((QuerySnapshot querySnapshot) => {
-//      querySnapshot.documents.forEach((element) {print(element["tel"]);})
-//    });
     return FutureBuilder<DocumentSnapshot>(
-      future: users.document(userId).collection('orders').document(orderId).get(),
+      future: users.document(widget.userId).collection('orders').document(widget.orderId).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
@@ -23,7 +27,34 @@ class GetOrder extends StatelessWidget {
           //TODO
           print("Data Available");
           Map<String, dynamic> orderData = snapshot.data.data;
-          return Text("DATA: $orderData");
+          //Access Data inside orderData via ["key"]
+          int tempPrice = 0;
+          for (int i = 0; i < orderData["orders"].length; i++) {
+            print(orderData["orders"][i]);
+            switch (orderData["orders"][i]["product"]) {
+              case "เสื้อโปโล" : {
+                tempPrice += 300 * orderData["orders"][i]["amount"];
+              }
+              break;
+              case "เสื้อชอป" : {
+                tempPrice += 360 * orderData["orders"][i]["amount"];
+              }
+              break;
+
+              case "เสื้อกาวน์" : {
+                tempPrice += 340 * orderData["orders"][i]["amount"];
+              }
+              break;
+            }
+          }
+
+          print("price = $tempPrice");
+          return Column(
+            children: [
+              Text("DATA: ${orderData["orders"]}"),
+              Text("TOTAL PRICE = $tempPrice")
+            ],
+          );
         }
         return Text("Loading");
       },

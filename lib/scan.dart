@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:smoeng_uniform_admin/verify.dart';
@@ -75,11 +76,18 @@ class _ScanPageState extends State<ScanPage> {
                 padding: EdgeInsets.all(15.0),
                 onPressed: () async {
                   if (orderId != null) {
-                    //TODO navigate ไปหน้าถัดไป และส่ง jsonData ไป
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) => VerifyPage(this.userId, this.orderId)));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            VerifyPage(this.userId, this.orderId)));
                   } else {
-                    print("jsonData is blank");
+                    AwesomeDialog(
+                      context: context,
+                      dialogType: DialogType.ERROR,
+                      animType: AnimType.BOTTOMSLIDE,
+                      title: 'METHOD NOT ALLOW',
+                      desc: 'You haven\'t scan any qr code yet.',
+                      btnCancelOnPress: () {},
+                    )..show();
                   }
                 },
                 child: Text(
@@ -92,11 +100,32 @@ class _ScanPageState extends State<ScanPage> {
                 shape: RoundedRectangleBorder(
                     side: BorderSide(color: Colors.green, width: 3.0),
                     borderRadius: BorderRadius.circular(20.0)),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              FlatButton(
+                padding: EdgeInsets.all(15.0),
+                onPressed: () async {
+                  setState(() {
+                    qrCodeResult = "Not Scanned Yet";
+                    orderId = null;
+                    userId = null;
+                  });
+                },
+                child: Text(
+                  "RESET",
+                  style: TextStyle(
+                      color: Colors.blueGrey,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.blueGrey, width: 3.0),
+                    borderRadius: BorderRadius.circular(20.0)),
               )
             ],
           ),
         ));
   }
 }
-
-
